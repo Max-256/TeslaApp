@@ -12,8 +12,9 @@ export default function Page() {
     <View style={styles.container}>
       <Header />
       <Image style={styles.image} source={car} />
-      <ControlRow />
+
       <FlatList
+        ListHeaderComponent={ControlRow}
         showsVerticalScrollIndicator={false}
         data={menuOptions}
         renderItem={MenuOption}
