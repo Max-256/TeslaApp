@@ -11,6 +11,7 @@ import {
 import car from "../assets/images/car.png";
 import menuOptions from "../assets/menuOptions";
 import MenuOption from "./components/MenuOption";
+import ControlRow from "./components/ControlRow";
 
 export default function Page() {
   return (
@@ -27,12 +28,7 @@ export default function Page() {
 
       <Image style={styles.image} source={car} />
 
-      <View style={styles.controls}>
-        <Entypo name="lock" size={26} color="gray" />
-        <MaterialCommunityIcons name="fan" size={26} color="gray" />
-        <FontAwesome5 name="bolt" size={26} color="gray" />
-        <Ionicons name="car-sport-sharp" size={26} color="gray" />
-      </View>
+      <ControlRow />
 
       <FlatList
         showsVerticalScrollIndicator={false}
@@ -49,11 +45,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     paddingTop: Constants.statusBarHeight,
-  },
-  controls: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginVertical: 20,
   },
 
   header: {
