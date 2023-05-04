@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, FlatList } from "react-native";
 import Constants from "expo-constants";
 import {
   FontAwesome,
@@ -6,9 +6,11 @@ import {
   MaterialCommunityIcons,
   FontAwesome5,
   Ionicons,
+  MaterialIcons,
 } from "@expo/vector-icons";
 
 import car from "../assets/images/car.png";
+import menuOptions from "../assets/menuOptions";
 
 export default function Page() {
   return (
@@ -31,6 +33,27 @@ export default function Page() {
         <FontAwesome5 name="bolt" size={26} color="gray" />
         <Ionicons name="car-sport-sharp" size={26} color="gray" />
       </View>
+
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        data={menuOptions}
+        renderItem={({ item }) => (
+          <View style={styles.optionsRow}>
+            <MaterialCommunityIcons
+              name={item.iconName}
+              size={26}
+              color="gray"
+            />
+            <Text style={styles.optionText}>{item.name}</Text>
+            <MaterialIcons
+              style={{ marginLeft: "auto" }}
+              name="keyboard-arrow-right"
+              size={24}
+              color="gray"
+            />
+          </View>
+        )}
+      />
     </View>
   );
 }
@@ -39,12 +62,13 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#161818",
     flex: 1,
-    padding: 15,
+    padding: 10,
     paddingTop: Constants.statusBarHeight,
   },
   controls: {
     flexDirection: "row",
     justifyContent: "space-around",
+    marginVertical: 20,
   },
 
   header: {
@@ -53,8 +77,19 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: 250,
+    height: 200,
     resizeMode: "contain",
+  },
+  optionsRow: {
+    flexDirection: "row",
+    marginVertical: 10,
+    alignItems: "center",
+  },
+  optionText: {
+    color: "#eee",
+    fontSize: 18,
+    fontWeight: "bold",
+    marginLeft: 10,
   },
   title: {
     fontSize: 24,
