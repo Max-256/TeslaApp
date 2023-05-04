@@ -1,6 +1,12 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import Constants from "expo-constants";
-import { FontAwesome } from "@expo/vector-icons";
+import {
+  FontAwesome,
+  Entypo,
+  MaterialCommunityIcons,
+  FontAwesome5,
+  Ionicons,
+} from "@expo/vector-icons";
 
 import car from "../assets/images/car.png";
 
@@ -18,6 +24,13 @@ export default function Page() {
       </View>
 
       <Image style={styles.image} source={car} />
+
+      <View style={styles.controls}>
+        <Entypo name="lock" size={26} color="gray" />
+        <MaterialCommunityIcons name="fan" size={26} color="gray" />
+        <FontAwesome5 name="bolt" size={26} color="gray" />
+        <Ionicons name="car-sport-sharp" size={26} color="gray" />
+      </View>
     </View>
   );
 }
@@ -28,6 +41,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 15,
     paddingTop: Constants.statusBarHeight,
+  },
+  controls: {
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
 
   header: {
