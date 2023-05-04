@@ -1,11 +1,18 @@
 import { StyleSheet, Text, View } from "react-native";
+import Constants from "expo-constants";
+import { FontAwesome } from "@expo/vector-icons";
 
 export default function Page() {
   return (
     <View style={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>Hello World</Text>
-        <Text style={styles.subtitle}>This is the first page of your app.</Text>
+      <View style={styles.header}>
+        <View>
+          <Text style={styles.title}>My model S</Text>
+          <Text style={styles.subtitle}>Parked</Text>
+        </View>
+        <View>
+          <FontAwesome name="user-circle" size={30} color="gray" />
+        </View>
       </View>
     </View>
   );
@@ -13,22 +20,24 @@ export default function Page() {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#161818",
     flex: 1,
-    alignItems: "center",
-    padding: 24,
+    padding: 15,
+    paddingTop: Constants.statusBarHeight,
   },
-  main: {
-    flex: 1,
-    justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
+
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   title: {
-    fontSize: 64,
+    fontSize: 24,
     fontWeight: "bold",
+    color: "#eee",
+    marginBottom: 5,
   },
   subtitle: {
-    fontSize: 36,
-    color: "#38434D",
+    color: "gray",
+    fontWeight: "500",
   },
 });
