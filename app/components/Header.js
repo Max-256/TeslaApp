@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
+    padding: 10,
   },
   title: {
     fontSize: 24,
