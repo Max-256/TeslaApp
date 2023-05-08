@@ -3,9 +3,9 @@ import Constants from "expo-constants";
 
 import car from "../assets/images/car.png";
 import menuOptions from "../assets/menuOptions";
-import MenuOption from "./components/MenuOption";
-import ControlRow from "./components/ControlRow";
-import Header from "./components/Header";
+import MenuOption from "../components/MenuOption";
+import ControlRow from "../components/ControlRow";
+import Header from "../components/Header";
 
 export default function Page() {
   return (
