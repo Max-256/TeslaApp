@@ -1,9 +1,21 @@
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import { useState } from "react";
 
 function ClimateScreen(props) {
+  const [temp, setTemp] = useState(68);
+  const [active, setActive] = useState(false);
+  const [open, setOpen] = useState(false);
   const router = useRouter();
+
+  const handlePress = () => {
+    active ? setActive(false) : setActive(true);
+  };
+
+  const handleDoor = () => {
+    open ? setOpen(false) : setOpen(true);
+  };
 
   return (
     <View style={styles.container}>
@@ -20,27 +32,42 @@ function ClimateScreen(props) {
           Interior 74° F - Exterior 66° F
         </Text>
         <View style={styles.climateControls}>
-          <View style={styles.align}>
-            <MaterialCommunityIcons color="gray" name="power" size={30} />
-            <Text style={styles.text}>On</Text>
-          </View>
+          <Pressable style={styles.align} onPress={handlePress}>
+            <MaterialCommunityIcons
+              color={active ? "white" : "gray"}
+              name="power"
+              size={30}
+            />
+            <Text style={[styles.text, { color: active ? "white" : "gray" }]}>
+              {" "}
+              {active ? "On" : "off"}
+            </Text>
+          </Pressable>
           <View style={styles.degree}>
             <MaterialCommunityIcons
               color="#5a5a5a"
               name="chevron-left"
               size={25}
+              onPress={() => setTemp(temp - 1)}
             />
-            <Text style={styles.temp}>68°</Text>
+            <Text style={styles.temp}>{temp}°</Text>
             <MaterialCommunityIcons
               color="#5a5a5a"
               name="chevron-right"
+              onPress={() => setTemp(temp + 1)}
               size={25}
             />
           </View>
-          <View style={styles.align}>
-            <MaterialCommunityIcons color="gray" name="car-door" size={30} />
-            <Text style={styles.text}>Vent</Text>
-          </View>
+          <Pressable onPress={handleDoor} style={styles.align}>
+            <MaterialCommunityIcons
+              color={open ? "white" : "gray"}
+              name="car-door"
+              size={30}
+            />
+            <Text style={[styles.text, { color: open ? "white" : "gray" }]}>
+              {open ? "Open" : "Closed"}
+            </Text>
+          </Pressable>
         </View>
       </View>
     </View>
